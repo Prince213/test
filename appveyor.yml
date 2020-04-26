@@ -9,9 +9,10 @@ environment:
 build_script:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
   - ps: .\test.ps1 -arg1 "$env:testvar" -arg2 "$env:PLATFORM"
-  - ps: Get-ChildItem C:\Strawberry\perl
+  - ps: Get-ChildItem C:\Strawberry
 artifacts:
   - path: test-$(testvar)-$(PLATFORM).zip
+# set PATH=%~dp0perl\site\bin;%~dp0perl\bin;%~dp0c\bin;%PATH%
 # deploy:
 #   release: test-v$(appveyor_build_version)
 #   description: 'Test release'
