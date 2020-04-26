@@ -10,13 +10,13 @@ build_script:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
   - ps: .\test.ps1 -arg1 "-$env:testvar" -arg2 "-$env:PLATFORM"
 artifacts:
-  - path: test-$(PLATFORM).zip
-deploy:
-  release: test-v$(appveyor_build_version)
-  description: 'Test release'
-  provider: GitHub
-  auth_token:
-    secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
-  artifact: test*.zip
-  draft: false
-  prerelease: false
+  - path: test-$(testvar)-$(PLATFORM).zip
+# deploy:
+#   release: test-v$(appveyor_build_version)
+#   description: 'Test release'
+#   provider: GitHub
+#   auth_token:
+#     secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
+#   artifact: test*.zip
+#   draft: false
+#   prerelease: false

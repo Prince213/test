@@ -4,4 +4,4 @@ param (
     [string]$arg2 = ''
 )
 Write-Host "Hello, world!$arg1!$arg2!"
-Compress-Archive .\* -DestinationPath "test-$env:PLATFORM.zip"
+Compress-Archive .\* -DestinationPath "test-$arg1-$env:PLATFORM.zip"
