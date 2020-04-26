@@ -13,8 +13,6 @@ deploy:
   provider: GitHub
   auth_token:
     secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
-  artifact:
-    - path: test$(platform).zip
-      name: Test archive
+  artifact: test$(platform).zip
   draft: false
   prerelease: false
