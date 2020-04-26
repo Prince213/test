@@ -1,2 +1,2 @@
 Write-Host "Hello, world!"
-Compress-Archive .\* -DestinationPath "test$env:PLATFORM.zip"
+Compress-Archive .\* -DestinationPath "test-$env:PLATFORM.zip"
