@@ -4,9 +4,11 @@ image:
 platform:
   - x86
   - x64
+environment:
+  testvar: 123.456.789
 build_script:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
-  - ps: .\test.ps1 -arg "-$env:PLATFORM"
+  - ps: .\test.ps1 -arg1 "-$env:testvar" -arg2 "-$env:PLATFORM"
 artifacts:
   - path: test-$(PLATFORM).zip
 
