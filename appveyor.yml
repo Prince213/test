@@ -6,20 +6,22 @@ platform:
   - x64
 environment:
   testvar: 123.456.789
+
+  matrix:
+    - abc: def
+
+    - abc: 123
 build_script:
-  - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
-  - ps: .\test.ps1 -arg1 "$env:testvar" -arg2 "$env:PLATFORM"
-  - ps: Get-ChildItem C:\Strawberry
-  - cmd: set "PATH=C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\Strawberry\c\bin;%PATH%"
+  - ps: .\test.ps1 -arg1 "$env:abc" -arg2 "$env:PLATFORM"
 artifacts:
-  - path: test-$(testvar)-$(PLATFORM).zip
+  - path: test-$(abc)-$(PLATFORM).zip
 deploy:
   release: test-v$(appveyor_build_version)-$(testvar)
   description: 'Test release'
   provider: GitHub
   auth_token:
     secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
-  artifact: test-$(testvar)-$(PLATFORM).zip
+  artifact: /.+\.zip/
   draft: false
   prerelease: false
   on:
