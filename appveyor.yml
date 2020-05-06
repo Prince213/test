@@ -6,6 +6,7 @@ platform:
   - x64
 environment:
   testvar: 123.456.789
+  rel: 0
 
   matrix:
     - abc: def
@@ -16,7 +17,7 @@ build_script:
 artifacts:
   - path: test-$(abc)-$(PLATFORM).zip
 deploy:
-  release: test-v$(appveyor_build_version)-$(testvar)
+  release: test-v$(testvar)-r$(rel)
   description: 'Test release'
   provider: GitHub
   auth_token:
