@@ -19,6 +19,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
-  artifact: test*.zip
+  artifact: test-$(testvar)-$(PLATFORM).zip
   draft: false
   prerelease: false
+  skip_tags: true
