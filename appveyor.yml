@@ -10,15 +10,15 @@ build_script:
   - cmd: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" %PLATFORM%
   - ps: .\test.ps1 -arg1 "$env:testvar" -arg2 "$env:PLATFORM"
   - ps: Get-ChildItem C:\Strawberry
+  - cmd: set "PATH=C:\Strawberry\perl\site\bin;C:\Strawberry\perl\bin;C:\Strawberry\c\bin;%PATH%"
 artifacts:
   - path: test-$(testvar)-$(PLATFORM).zip
-# set PATH=%~dp0perl\site\bin;%~dp0perl\bin;%~dp0c\bin;%PATH%
-# deploy:
-#   release: test-v$(appveyor_build_version)
-#   description: 'Test release'
-#   provider: GitHub
-#   auth_token:
-#     secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
-#   artifact: test*.zip
-#   draft: false
-#   prerelease: false
+deploy:
+  release: test-v$(appveyor_build_version)-$(testvar)
+  description: 'Test release'
+  provider: GitHub
+  auth_token:
+    secure: z8nPPbj5OVa9q8IRsMDEzFU2FNihxXc5yp+cpx2mjy2k30JbnPUKxKztYrMT0aw9
+  artifact: test*.zip
+  draft: false
+  prerelease: false
