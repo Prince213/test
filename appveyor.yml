@@ -22,4 +22,6 @@ deploy:
   artifact: test-$(testvar)-$(PLATFORM).zip
   draft: false
   prerelease: false
-  skip_tags: true
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true
