@@ -13,7 +13,8 @@ environment:
 
     - abc: 123
 build_script:
-  - cmd: gcc -v
+  - cmd: perl --version
+  - cmd: echo %PATH%
   - ps: .\test.ps1 -arg1 "$env:abc" -arg2 "$env:PLATFORM"
 artifacts:
   - path: test-$(abc)-$(PLATFORM).zip
